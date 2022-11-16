@@ -1,0 +1,44 @@
+// Standard Ramen API for NekoVM
+// Everything in here will be served in the ramen namespace when package system is ready
+
+echo = function(value) {
+	$print(value);
+}
+
+echoln = function(value) {
+	$print(value + "\n");
+}
+
+arrlen = function(arr) {
+	return $asize(arr);
+}
+
+// This is an API for Ramen to get a value from an array or object in Neko because It's easier to make the API than to make the AST that work seamlessly (There's no object in Ramen instead it's just an HashMap but will be compiled into object in neko). Maybe I will just change this things in the future since $objget() is a bit slower in neko
+
+get = function(source, index) {
+	if( $typeof(source) == $tobject ) {
+		return $objget(source, $hash(index));
+	}
+	else {
+		if($typeof(source) == $tarray) {
+			return source[index];
+		}
+		else {
+			$throw("A bad indexing occured");
+		}
+	}
+}
+
+set = function(source, index, value) {
+	if( $typeof(source) == $tobject ) {
+		return $objset(source, $hash(index), value);
+	}
+	else {
+		if($typeof(source) == $tarray) {
+			return source[index] = value;
+		}
+		else {
+			$throw("A bad indexing occured");
+		}
+	}	
+}

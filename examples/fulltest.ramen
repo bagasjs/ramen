@@ -1,0 +1,37 @@
+fun Pow(var base, var p)
+{
+	var i = 0;
+	var result = 1;
+	repeat
+	{
+		result = result * base;
+
+		if(i > p) {
+			break;
+		} else {
+			i = i + 1
+		}
+	}
+}
+
+fun GetServerCallback(var port, var hostname)
+{
+	return fun(){
+		echo("Server is listening at");
+		echo(hostname);
+		echo(port);
+	}
+}
+
+fun Main()
+{
+	var numbers = [1,2,3];
+	var user = [
+		name = "WhoAmI",
+		password = "123"
+	];
+
+	echoln("My Name is " + get(user, "name"));
+	echo(numbers[0])
+	GetServerCallback(8000, "localhost")();
+}
