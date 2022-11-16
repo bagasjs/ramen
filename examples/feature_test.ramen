@@ -1,8 +1,0 @@
-hello = "hello"
-[1,2,3]
-
-var user = [
-	name = "WhoAmI",
-	password = "IAmYou",
-	anotherNumbers = [1,2,3,4]
-]
